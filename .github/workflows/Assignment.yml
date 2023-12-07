@@ -2,7 +2,7 @@ name: Assignment
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -10,12 +10,15 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    - name: Set up Python and Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
-        # Explicitly set the desired version of Node.js
-        node-version: '16'
 
     - name: Checkout code
       uses: actions/checkout@v4
