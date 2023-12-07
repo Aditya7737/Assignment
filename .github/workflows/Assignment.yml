@@ -7,9 +7,24 @@ on:
 jobs:
   build:
 
-    runs-on: windows-2019  # Use a specific version of Windows (Windows Server 2019)
+    runs-on: windows-2019
 
     steps:
-    - uses: actions/setup-python@v2
-    - uses: actions/checkout@v4
-    - run: pip install -r requirements.txt
+    - name: Set up Python and Node.js
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+        # Explicitly set the desired version of Node.js
+        node-version: '16'
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests  # Add more steps as needed
+      run: |
+        # Add commands to run tests or other tasks
