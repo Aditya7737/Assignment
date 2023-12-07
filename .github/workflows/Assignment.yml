@@ -1,0 +1,16 @@
+name: Assignment
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: windows-2019  # Use a specific version of Windows (Windows Server 2019)
+
+    steps:
+    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v4
+    - run: pip install -r requirements.txt
+	
